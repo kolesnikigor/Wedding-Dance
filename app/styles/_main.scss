@@ -1,0 +1,835 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-montserrat;
+  font-size: $main-font-size;
+  color: $main-color;
+  position: relative;
+}
+
+a {
+  color: $main-color;
+  text-decoration: none;
+}
+
+//! _____________Custom (Blocks)___________
+.hidden {
+  display: none;
+}
+
+.container {
+  max-width: $container-widths;
+  margin: 0 auto;
+  padding: 0 #{$container-padding-lg};
+
+}
+
+.sticky {
+  //? стоит ли вешать стики на контейнер
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.half-opacity {
+  opacity: 0.5;
+}
+
+.primary-btn {
+  width: 161px;
+  height: 46px;
+  border: 2px solid #{$second-color};
+  border-radius: 3px;
+  color: $second-color;
+  padding: 10px 39px;
+  line-height: 153.4%;
+  display: block;
+
+  &:hover {
+    background: $second-color;
+    color: #fff;
+  }
+}
+
+.section-title {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 93.9%;
+  margin-bottom: 24px;
+}
+
+.section-desc {
+  max-width: 668px;
+  line-height: 153.4%;
+  margin-bottom: 48px;
+}
+
+.section {
+  padding-bottom: 100px;
+}
+
+//! ____________Swiper__________________
+
+.swiper-container {
+  margin: -15px 0 -50px 0;
+}
+
+.swiper-wrapper {
+  padding: 15px 0 50px 0;
+  position: relative;
+}
+
+.swiper-button-prev {
+  right: auto;
+  left: calc(50% - 80px);
+  top: 96%;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    transform: rotate(225deg);
+    position: absolute;
+    top: 34%;
+    right: 13px;
+  }
+
+  &::before {
+    content: "";
+    width: 37px;
+    height: 10px;
+    border-top: 2px solid #000;
+    transform: translate(15px, 50%);
+    position: absolute;
+    top: 35%;
+    right: 37%;
+  }
+}
+
+.swiper-button-next {
+  right: calc(50% - 80px);
+  left: auto;
+  top: 96%;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 34%;
+    right: -5px;
+  }
+
+  &::before {
+    content: "";
+    width: 37px;
+    height: 10px;
+    border-top: 2px solid #000;
+    transform: translate(15px, 50%);
+    position: absolute;
+    top: 35%;
+    right: 37%;
+  }
+}
+
+.swiper-pagination-custom {
+  font-size: 16px;
+}
+
+//! ___________Header__________________
+
+.header {
+  background: #fff;
+  margin: 0 -#{$container-padding-lg};
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px #{$container-padding-lg};
+
+  }
+}
+
+#menu-toggle {
+  opacity: 0;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 93.9%;
+}
+
+.nav {
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list-item {
+    margin-right: 24px;
+  }
+
+  &__list-item:last-child {
+    margin: 0 0 0 11px;
+  }
+
+
+  &__list-link {
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 93.9%;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &--btn {
+      @extend .primary-btn;
+      color: #000;
+      border-color: #000;
+      padding: 5px 33px;
+      font-weight: 600;
+      width: 116px;
+      height: 36px;
+      line-height: 153.4%;
+      font-size: $main-font-size;
+
+      &:hover {
+        text-decoration: none;
+        background: #000;
+        color: #fff;
+        transition: 0.2s;
+      }
+    }
+  }
+}
+
+//! __________Hero (Banner) ______________
+
+.section-hero {
+  display: flex;
+
+  &__description {
+    width: 35%;
+    padding: 75px 75px 80px 0;
+
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 72px;
+    margin-bottom: 15px;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation-fill-mode: forwards;
+
+  }
+
+  &__text {
+    margin-bottom: 40px;
+    opacity: 0;
+    animation-fill-mode: forwards;
+
+  }
+
+  &__image {
+    max-height: 653px;
+    width: 65%;
+    overflow: hidden;
+    opacity: 0;
+    animation-fill-mode: forwards;
+
+  }
+
+  &__image-item {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+
+  &__btn {
+    opacity: 0;
+    animation-fill-mode: forwards;
+
+  }
+}
+
+//! ____________Services _________________
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 4px 15px rgba(207, 207, 207, 0.25);
+  border-radius: 2px;
+  min-height: 644px;
+
+  &__image {
+    max-height: 420px;
+    overflow: hidden;
+  }
+
+  &__image-item {
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+  }
+
+  &__info {
+    padding: 40px;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 93.9%;
+    margin-bottom: 24px;
+  }
+
+  &__list-item {
+    line-height: 153.4%;
+    margin-bottom: 8px;
+  }
+}
+
+//! ____________Offers _________________
+.our-offers {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    width: 25%;
+    text-align: center;
+    padding: 32px;
+  }
+
+  &__icon {
+    font-size: 70px;
+    color: $second-color;
+  }
+
+  &__desc {
+    line-height: 153.4%;
+    font-size: 16px;
+    color: $main-color;
+  }
+}
+
+//! ____________Coaches _________________
+
+.section-coaches {
+  &__card {
+    margin: 0 8px;
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 15px rgba(207, 207, 207, 0.25);
+    border-radius: 2px;
+  }
+
+  &__card-info {
+    padding: 43px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__card-number {
+    font-weight: bold;
+    line-height: 153.4%;
+    margin-bottom: 8px;
+  }
+
+  &__card-title {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 93.9%;
+    margin-bottom: 8px;
+  }
+
+  &__card-desc {
+    line-height: 153.4%;
+    margin-bottom: 24px;
+  }
+
+  &__card-list {
+    line-height: 153.4%;
+  }
+
+  &__card-list-item {
+    margin-bottom: 16px;
+  }
+
+  &__btn--mobile {
+    display: none;
+  }
+
+}
+
+//! ___________Footer _________________-
+.footer {
+  background: #1F1F1F;
+
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 35px 0;
+
+  }
+
+  &__logo {
+    color: #fff;
+  }
+
+  &__copyright {
+    line-height: 153.4%;
+    color: #FFFFFF;
+  }
+
+}
+
+//! ______________@media _______________
+@media (max-width: 1170px) {
+
+  .section-hero {
+
+    &__description {
+      padding: 30px 30px 30px 0;
+
+    }
+
+    &__title {
+      font-size: 55px;
+    }
+  }
+
+  .card {
+    &__image {
+      max-height: 320px;
+    }
+  }
+
+}
+
+@media (max-width: 960px) {
+  .container {
+    padding: 0 #{$container-padding-md};
+  }
+
+  .header {
+    padding: 20px 0;
+    margin: 0 -#{$container-padding-md};
+
+    &__inner {
+      padding: 0 #{$container-padding-md};
+    }
+  }
+
+  .nav {
+
+    &__list-item {
+      margin-right: 20px;
+    }
+
+    &__list-item:last-child {
+      margin: 0 0 0 5px;
+    }
+
+  }
+
+  .section-hero {
+
+    &__description {
+      padding: 25px 25px 25px 0;
+
+    }
+
+    &__title {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    &__subtitle {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .card {
+    min-height: 596px;
+
+    &__image {
+      max-height: 285px;
+    }
+
+    &__info {
+      padding: 20px;
+    }
+
+    &__title {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+
+  .our-offers {
+    &__item {
+      width: 33.33%;
+      padding: 20px;
+    }
+  }
+
+  .swiper-container {
+    margin: -15px -15px -40px 0;
+  }
+
+  .swiper-wrapper {
+    padding: 15px 15px 40px 0;
+  }
+
+}
+
+@media (max-width: 790px) {
+  .header {
+    &__inner {
+      position: relative;
+    }
+  }
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 16px;
+    width: 32px;
+    height: 14px;
+    cursor: pointer;
+    z-index: 1;
+
+    &__decor {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #000;
+
+      &::before {
+        @extend .menu-btn__decor;
+        content: '';
+        top: -6px;
+      }
+
+      &::after {
+        @extend .menu-btn__decor;
+        content: '';
+        top: 6px;
+
+      }
+    }
+
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: calc(100% + #{$container-padding-md}*2);
+    visibility: hidden;
+    background: #fff;
+    padding-left: 24px;
+    font-family: $font-family-montserrat;
+
+    &::before {
+      content: '';
+      height: 4px;
+      background: $second-color;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: -24px;
+    }
+
+    &__title {
+      display: inline-block;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 93.9%;
+      margin: 40px 0 48px 0;
+    }
+
+    &__title-bg {
+      display: inline-block;
+      position: absolute;
+      top: 35%;
+      right: -310px;
+      font-size: 250px;
+      font-weight: 900;
+      line-height: 93.9%;
+      font-family: $font-family-montserrat;
+      color: #FEF2F6;
+      transform: rotate(90deg);
+      z-index: -1;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+    }
+
+    &__list-item {
+      margin-bottom: 40px;
+      font-weight: bold;
+      font-size: 24px;
+
+      &:last-child {
+        margin: 16px 0 0 0;
+      }
+
+    }
+
+    &__list-link {
+      font-size: 24px;
+      line-height: 93.9%;
+
+    }
+  }
+
+  #menu-toggle:checked~.menu-btn>.menu-btn__decor {
+    transform: rotate(45deg);
+    transition: 0.2s;
+
+    &::before {
+      top: 0;
+      transform: rotate(0);
+    }
+
+    &::after {
+      top: 0;
+      transform: rotate(90deg);
+      transition: 0.2s;
+    }
+  }
+
+  #menu-toggle:checked~.nav {
+    visibility: visible;
+  }
+
+  .section-hero {
+    flex-direction: column-reverse;
+    height: auto;
+
+    // desc 460px img 836px
+    &__description {
+      width: 100%;
+      padding: 0;
+    }
+
+    &__title {
+      font-weight: bold;
+      font-size: 36px;
+      margin-bottom: 11px;
+    }
+
+    &__subtitle {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+
+    &__text {
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+
+    &__image {
+      width: calc(100% + #{$container-padding-md}*2);
+      margin: 0 -#{$container-padding-md} 32px -#{$container-padding-md};
+    }
+
+    &__image-item {
+      object-fit: cover;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .section-desc {
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+
+  .section {
+    padding-bottom: 56px;
+  }
+
+  .card {
+    min-height: 451px;
+
+    &__image {
+      max-height: 285px;
+    }
+
+    &__info {
+      padding: 16px;
+    }
+
+    &__title {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .our-offers {
+
+    &__item {
+      width: 50%;
+      padding: 17px;
+    }
+
+    &__icon {
+      font-size: 62px;
+    }
+
+    &__desc {
+      font-size: 13px;
+    }
+  }
+
+  .section-coaches {
+
+    &__card {
+      flex-direction: column;
+    }
+
+    &__card-img {
+      max-height: 301px;
+    }
+
+    &__card-info {
+      padding: 16px;
+      position: relative;
+    }
+
+    &__card-number {
+      font-size: 12px;
+      padding-bottom: 9px;
+    }
+
+    &__card-title {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    &__card-desc {
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    &__card-list {
+      margin-bottom: 32px;
+    }
+
+    &__card-list-item {
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    &__btn {
+      display: none;
+    }
+
+    &__btn--mobile {
+      display: block;
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      width: 33px;
+      height: 33px;
+      border: 2px solid #{$second-color};
+      border-radius: 50%;
+      padding: 0;
+    }
+
+    &__btn-decor {
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid #{$second-color};
+      border-right: 2px solid #{$second-color};
+      transform: rotate(45deg);
+      position: absolute;
+      top: 35%;
+      right: 37%;
+    }
+  }
+
+  .footer {
+    &__inner {
+      padding: 18px 0;
+    }
+  }
+
+  .swiper-button-prev {
+    display: none;
+  }
+
+  .swiper-button-next {
+    display: none;
+  }
+
+
+  .swiper-pagination-bullet {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #fff;
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: $second-color;
+  }
+}
+
+
+
+
+
+
+
+// media 480 640 960 1200 1440
+// бургер на 768
+// вставить картинку через style bg-img
+// сделать слайдер который активируется если 4 и больше слайдов свайпер джээс
+// написать классы для каждой иконки мд, лг, см, и прописать стили под каждую иконку (размер)
+// добавить в gulp iconsfont, iconfont-css
+//? подключить svg спрайт (для подмены или когда двухцветные)
+// добавить srcset для изображений
+// прикрутить webp изображения все через тег picture
+// оптимизировать в вкладке нетворк, после замены webp (посмотреть ресурс и время внизу вкладки, сравнить результат)
+// для ретины организовать изображения через медиа запрос (pixel-plat)
+//? аджайр по спринтам работают
+//
